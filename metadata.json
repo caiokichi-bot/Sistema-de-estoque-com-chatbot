@@ -1,0 +1,6 @@
+{
+  "name": "StockMaster AI - Gestão de Estoque",
+  "description": "Sistema completo de controle de estoque organizado por categorias, com banco de dados Supabase e chatbot inteligente flutuante conectado à API Groq.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
