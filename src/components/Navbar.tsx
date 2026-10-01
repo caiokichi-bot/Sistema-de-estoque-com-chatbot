@@ -1,18 +1,17 @@
 import React from 'react';
-import { Package, Sparkles, Plus, FolderKanban, RefreshCw } from 'lucide-react';
+import { Package, Plus, FolderKanban, RefreshCw } from 'lucide-react';
 
 interface NavbarProps {
-  isGroqConfigured: boolean;
   onOpenCategoryModal: () => void;
   onOpenNewItemModal: () => void;
   onRefresh: () => void;
   isLoading: boolean;
+  isGroqConfigured?: boolean;
   isSupabaseConnected?: boolean;
   onOpenSupabaseModal?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
-  isGroqConfigured,
   onOpenCategoryModal,
   onOpenNewItemModal,
   onRefresh,
@@ -37,33 +36,18 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
 
-        {/* Status Indicators & Actions */}
-        <div className="hidden md:flex items-center gap-3">
-          {/* Groq indicator */}
-          <div
-            className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs border ${
-              isGroqConfigured
-                ? 'bg-orange-950/30 border-orange-700/50 text-orange-300'
-                : 'bg-slate-800/60 border-slate-700 text-slate-400'
-            }`}
-          >
-            <Sparkles className="w-3.5 h-3.5 text-orange-400" />
-            <span>{isGroqConfigured ? 'Groq AI Pronto' : 'Groq AI (Pendente)'}</span>
-          </div>
-
+        {/* Action Buttons & Controls */}
+        <div className="flex items-center gap-2 sm:gap-3">
           {/* Refresh button */}
           <button
             onClick={onRefresh}
             disabled={isLoading}
-            className="p-2 rounded-md hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition-colors cursor-pointer"
+            className="p-2 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition-colors cursor-pointer mr-1"
             title="Recarregar dados"
           >
             <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin text-emerald-400' : ''}`} />
           </button>
-        </div>
 
-        {/* Action Buttons */}
-        <div className="flex items-center gap-2 sm:gap-3">
           <button
             onClick={onOpenCategoryModal}
             className="flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-slate-300 bg-slate-800 hover:bg-slate-750 border border-slate-700 rounded-lg hover:text-white transition-all cursor-pointer"
